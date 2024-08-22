@@ -16,7 +16,8 @@ tests: composer-update
 
 # 容器开发环境
 ## 启动开发环境
-dev-build:
+# 王少强：此处添加了composer的安装和组件库更新
+dev-build: composer-update
 	docker-compose build
 
 dev-up: dev-build
@@ -39,4 +40,6 @@ dev-clean: dev-down
 
 # 最终测试用命令
 dev-tests: dev-up
-	docker-compose exec recruit make tests
+#   王少强：docker镜像里没有make工具，所以此处修改为直接执行phpunit命令
+# 	docker-compose exec recruit make tests
+	docker-compose exec recruit ./vendor/bin/phpunit --testdox tests

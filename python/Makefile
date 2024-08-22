@@ -28,4 +28,6 @@ dev-clean: dev-down
 
 # 最终测试用命令
 dev-tests: dev-up
-	docker-compose exec recruit make tests
+#	王少强：docker镜像里没有make工具，所以此处修改为直接执行python命令
+#	docker-compose exec recruit make tests
+	docker-compose exec recruit python3 -m unittest tests/*.py
